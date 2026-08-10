@@ -71,6 +71,15 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_COMMENT_QUICK_REACTIONS =
             new BooleanSetting("hide_comment_quick_reactions", FALSE);
     public static final StringSetting DOWNLOAD_PATH = new StringSetting("down_path", "DCIM/TikTok");
+    public static final StringSetting DOWNLOAD_VIDEO_PATH = new StringSetting("download_video_path", "DCIM/TikTok");
+    public static final StringSetting DOWNLOAD_PHOTO_PATH = new StringSetting("download_photo_path", "DCIM/TikTok");
+    public static final StringSetting DOWNLOAD_STICKER_PATH = new StringSetting("download_sticker_path", "DCIM/TikTok");
+    private static final BooleanSetting DOWNLOAD_PATHS_MIGRATED = new BooleanSetting(
+            "download_paths_migrated",
+            FALSE,
+            false,
+            false
+    );
     public static final StringSetting DOWNLOAD_VIDEO_FILENAME_TEMPLATE = new StringSetting(
             "download_video_filename_template",
             "{creator}_{date}_{video_id}"
@@ -118,4 +127,14 @@ public class Settings extends BaseSettings {
     public static final StringSetting SIM_SPOOF_ISO = new StringSetting("simspoof_iso", "us");
     public static final StringSetting SIMSPOOF_MCCMNC = new StringSetting("simspoof_mccmnc", "310260");
     public static final StringSetting SIMSPOOF_OP_NAME = new StringSetting("simspoof_op_name", "T-Mobile");
+
+    static {
+        if (!DOWNLOAD_PATHS_MIGRATED.get()) {
+            String legacyPath = DOWNLOAD_PATH.get();
+            DOWNLOAD_VIDEO_PATH.save(legacyPath);
+            DOWNLOAD_PHOTO_PATH.save(legacyPath);
+            DOWNLOAD_STICKER_PATH.save(legacyPath);
+            DOWNLOAD_PATHS_MIGRATED.save(TRUE);
+        }
+    }
 }
