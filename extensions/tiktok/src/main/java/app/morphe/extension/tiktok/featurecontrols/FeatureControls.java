@@ -91,7 +91,23 @@ public final class FeatureControls {
     }
 
     public static Object filterNormalPendant(Object pendant) {
-        return Settings.HIDE_HOMEPAGE_COIN.get() ? null : pendant;
+        return filterPromotionalTouchPoint(pendant);
+    }
+
+    public static Object filterPromotionalTouchPoint(Object touchPoint) {
+        if (!Settings.HIDE_HOMEPAGE_COIN.get() || touchPoint == null) return touchPoint;
+
+        String className = touchPoint.getClass().getName();
+        switch (className) {
+            case "com.bytedance.touchpoint.api.model.NormalPendant":
+            case "com.bytedance.touchpoint.api.model.TimerPendant":
+            case "com.bytedance.touchpoint.api.model.SunshinePendant":
+            case "com.bytedance.touchpoint.api.model.CoinBottomTab":
+            case "com.bytedance.touchpoint.api.model.BottomTabBubble":
+                return null;
+            default:
+                return touchPoint;
+        }
     }
 
     public static boolean overrideLongPressSpeedUpEnabled(boolean enabled) {
