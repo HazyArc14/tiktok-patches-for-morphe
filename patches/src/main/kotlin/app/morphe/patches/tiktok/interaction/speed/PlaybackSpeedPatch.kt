@@ -13,7 +13,9 @@ import app.morphe.patches.tiktok.misc.extension.sharedExtensionPatch
 import app.morphe.patches.tiktok.shared.OnRenderFirstFrameFingerprint
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 @Suppress("unused")
@@ -30,7 +32,9 @@ val playbackSpeedPatch = bytecodePatch(
         PlaybackSpeedMenuSelectionFingerprint.method.apply {
             val applySpeedIndex = indexOfFirstInstructionOrThrow {
                 getReference<MethodReference>()?.let { reference ->
-                    reference.returnType == "V" &&
+                    reference.definingClass == "LX/0MPD;" &&
+                        reference.name == "LJ" &&
+                        reference.returnType == "V" &&
                         reference.parameterTypes == listOf(
                             "F",
                             "Lcom/ss/android/ugc/aweme/feed/model/Aweme;",
@@ -39,7 +43,17 @@ val playbackSpeedPatch = bytecodePatch(
                         )
                 } == true
             }
-            val speedRegister = getInstruction<FiveRegisterInstruction>(applySpeedIndex).registerC
+            val applySpeedInstruction = getInstruction(applySpeedIndex)
+            val speedRegister = when (applySpeedInstruction.opcode) {
+                Opcode.INVOKE_STATIC ->
+                    (applySpeedInstruction as FiveRegisterInstruction).registerC
+                Opcode.INVOKE_STATIC_RANGE ->
+                    (applySpeedInstruction as RegisterRangeInstruction).startRegister
+                else -> error(
+                    "Playback speed: expected TikTok's static LX/0MPD.LJ call, " +
+                        "found ${applySpeedInstruction.opcode}",
+                )
+            }
             addInstruction(
                 applySpeedIndex,
                 "invoke-static {v$speedRegister}, " +
