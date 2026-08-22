@@ -82,9 +82,7 @@ You can also copy this repository URL and paste it into Morphe's add source fiel
 
 ## Planned Work
 
-### In Progress
-
-- [~] Port and verify patches when TikTok compatibility moves to a new target version.
+Open to feature requests.
 
 <br>
 
