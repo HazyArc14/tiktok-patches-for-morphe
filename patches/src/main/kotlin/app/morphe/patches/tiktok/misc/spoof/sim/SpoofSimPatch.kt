@@ -9,6 +9,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.stringOption
+import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableBooleanEncodedValue.Companion.toMutable
+import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableStringEncodedValue
 import app.morphe.patches.shared.compat.AppCompatibilities
 import app.morphe.patches.tiktok.misc.extension.sharedExtensionPatch
 import app.morphe.patches.tiktok.misc.settings.SettingsStatusLoadFingerprint
@@ -19,18 +22,16 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.immutable.value.ImmutableBooleanEncodedValue
+import com.android.tools.smali.dexlib2.immutable.value.ImmutableStringEncodedValue
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/tiktok/spoof/sim/SpoofSimPatch;"
 
-@Suppress("unused")
-val simSpoofPatch = bytecodePatch(
-    name = "SIM spoof",
-    description = "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
-    default = true,
+private val regionSpoofHooksPatch = bytecodePatch(
+    description = "Injects the shared TikTok region identity hooks.",
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch,
     )
 
     compatibleWith(*AppCompatibilities.tiktok4623())
@@ -90,9 +91,62 @@ val simSpoofPatch = bytecodePatch(
             }
         }
 
+    }
+}
+
+@Suppress("unused")
+val simSpoofPatch = bytecodePatch(
+    name = "Region spoof",
+    description = "Adds in-app controls for changing the region TikTok reads.",
+    default = true,
+) {
+    dependsOn(
+        regionSpoofHooksPatch,
+        settingsPatch,
+    )
+
+    compatibleWith(*AppCompatibilities.tiktok4623())
+
+    execute {
         SettingsStatusLoadFingerprint.method.addInstruction(
             0,
             "invoke-static {}, Lapp/morphe/extension/tiktok/settings/SettingsStatus;->enableSimSpoof()V",
         )
+    }
+}
+
+@Suppress("unused")
+val bypassRegionalRestrictionsPatch = bytecodePatch(
+    name = "Bypass regional restrictions",
+    description = "Uses a selected default region to help bypass regional restrictions.",
+    default = false,
+) {
+    dependsOn(regionSpoofHooksPatch)
+
+    compatibleWith(*AppCompatibilities.tiktok4623())
+
+    val defaultRegion by stringOption(
+        key = "defaultRegion",
+        title = "Default region",
+        description = "Region to use when applying this patch.",
+        default = DEFAULT_REGION_PRESET_ID,
+        values = regionPresetOptionValues,
+        required = true,
+    ) { value ->
+        value != null && regionPresetOptions.any { it.id == value }
+    }
+
+    execute {
+        val selectedPreset = regionPresetOption(defaultRegion!!)
+        val extensionClass = mutableClassDefBy(classDefBy(EXTENSION_CLASS_DESCRIPTOR))
+
+        extensionClass.staticFields.first { it.name == "DEFAULT_REGION_SPOOF_ENABLED" }.initialValue =
+            ImmutableBooleanEncodedValue.forBoolean(true).toMutable()
+        extensionClass.staticFields.first { it.name == "DEFAULT_REGION_ISO" }.initialValue =
+            MutableStringEncodedValue(ImmutableStringEncodedValue(selectedPreset.iso))
+        extensionClass.staticFields.first { it.name == "DEFAULT_REGION_MCC_MNC" }.initialValue =
+            MutableStringEncodedValue(ImmutableStringEncodedValue(selectedPreset.mccMnc))
+        extensionClass.staticFields.first { it.name == "DEFAULT_REGION_OPERATOR" }.initialValue =
+            MutableStringEncodedValue(ImmutableStringEncodedValue(selectedPreset.operatorName))
     }
 }

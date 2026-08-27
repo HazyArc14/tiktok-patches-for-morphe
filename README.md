@@ -56,9 +56,10 @@ The goal is to keep the existing patch set usable while adding more TikTok-focus
 | `Hold-and-slide 2x lock` | Enables TikTok's native hold, slide down, and release gesture for locking playback at 2x speed. |
 | `Open external links directly` | Opens profile and story website links in the system browser instead of TikTok's in-app browser. |
 | `Playback speed` | Enables playback-speed controls for all videos and remembers the selected speed between videos. |
+| `Bypass regional restrictions` | Replaces region identity values with a patch-time selected default. TikTok may still use IP address, account history, language, and server-side region signals. |
 | `Remember clear display` | Remembers TikTok's clear-display state between videos. |
 | `Resume videos after scrolling` | Restores a video's prior playback position when returning to it in the feed. |
-| `SIM spoof` | Replaces SIM country and operator values reported to TikTok and provides country presets. TikTok may still use IP address, account history, language, and other region signals. |
+| `Region spoof` | Adds in-app controls for overriding the region identity values TikTok reads. When disabled, the patch-time default is used if `Bypass regional restrictions` was applied. |
 | `Sanitize sharing links` | Removes tracking parameters from TikTok links before they are shared. |
 | `Settings` | Adds the Metra patches settings screen inside TikTok. |
 | `Show seekbar` | Shows TikTok's native video seekbar where it would normally be hidden. |
