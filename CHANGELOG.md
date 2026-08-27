@@ -1,3 +1,16 @@
+# [0.8.0-dev.1](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.7.0...v0.8.0-dev.1) (2026-08-27)
+
+
+### Features
+
+* add configurable regional restriction fallback ([9781ef2](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/9781ef2c18b1372764f590260e37d3df54fd6794))
+
+
+
+
+
+## 0.8.0-dev.1
+
 # [0.7.0](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.6.1...v0.7.0) (2026-08-23)
 
 
