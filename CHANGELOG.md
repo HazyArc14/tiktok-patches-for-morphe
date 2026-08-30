@@ -1,3 +1,16 @@
+# [0.8.0-dev.2](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.1...v0.8.0-dev.2) (2026-08-30)
+
+
+### Bug Fixes
+
+* remove ineffective regional fallback ([714830c](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/714830caeeaa5be1691609efefdae4d50ff179c6))
+
+
+
+
+
+## 0.8.0-dev.2
+
 # [0.8.0-dev.1](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.7.0...v0.8.0-dev.1) (2026-08-27)
 
 
