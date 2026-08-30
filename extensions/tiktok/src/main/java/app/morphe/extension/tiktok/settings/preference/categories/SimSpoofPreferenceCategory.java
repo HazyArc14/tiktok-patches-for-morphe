@@ -31,7 +31,7 @@ public class SimSpoofPreferenceCategory extends ConditionalPreferenceCategory {
         addPreference(new TogglePreference(
                 context,
                 "Use custom region",
-                "Use the selected region instead of the default region.",
+                "Use the selected region instead of the device region.",
                 Settings.SIM_SPOOF
         ));
         InputTextPreference countryIsoPreference = new InputTextPreference(

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.tiktok.settings.Settings;
 import app.morphe.extension.tiktok.spoof.sim.SimPreset;
@@ -36,44 +35,24 @@ public class SimPresetPreference extends Preference {
     private final InputTextPreference countryIsoPreference;
     private final InputTextPreference mccMncPreference;
     private final InputTextPreference operatorNamePreference;
-    private final String presetTitle;
-    private final BooleanSetting activeSetting;
 
     public SimPresetPreference(Context context,
                                InputTextPreference countryIsoPreference,
                                InputTextPreference mccMncPreference,
                                InputTextPreference operatorNamePreference) {
-        this(
-                context,
-                countryIsoPreference,
-                mccMncPreference,
-                operatorNamePreference,
-                "Region preset",
-                Settings.SIM_SPOOF
-        );
-    }
-
-    public SimPresetPreference(Context context,
-                               InputTextPreference countryIsoPreference,
-                               InputTextPreference mccMncPreference,
-                               InputTextPreference operatorNamePreference,
-                               String presetTitle,
-                               BooleanSetting activeSetting) {
         super(context);
         this.countryIsoPreference = countryIsoPreference;
         this.mccMncPreference = mccMncPreference;
         this.operatorNamePreference = operatorNamePreference;
-        this.presetTitle = presetTitle;
-        this.activeSetting = activeSetting;
-        setTitle(presetTitle);
+        setTitle("Region preset");
         refreshSummary();
     }
 
     public void refreshSummary() {
         refreshSummary(
-                countryIsoPreference.getText(),
-                mccMncPreference.getText(),
-                operatorNamePreference.getText()
+                Settings.SIM_SPOOF_ISO.get(),
+                Settings.SIMSPOOF_MCCMNC.get(),
+                Settings.SIMSPOOF_OP_NAME.get()
         );
     }
 
@@ -110,7 +89,7 @@ public class SimPresetPreference extends Preference {
         dialogView.setPadding(padding, padding, padding, padding);
 
         TextView title = new TextView(context);
-        title.setText(presetTitle);
+        title.setText("Region preset");
         title.setTextColor(getTitleTextColor());
         title.setTextSize(20);
         title.setTypeface(title.getTypeface(), android.graphics.Typeface.BOLD);
@@ -232,7 +211,7 @@ public class SimPresetPreference extends Preference {
         Logger.printDebug(() -> "SIM preset selected: " + preset.country + " / "
                 + preset.operatorName + " / " + preset.mccMnc + " / " + preset.iso);
 
-        if (activeSetting.get()) {
+        if (Settings.SIM_SPOOF.get()) {
             AbstractPreferenceFragment.showRestartDialog(getContext());
         } else {
             app.morphe.extension.shared.Utils.showToastShort("Region preset saved");

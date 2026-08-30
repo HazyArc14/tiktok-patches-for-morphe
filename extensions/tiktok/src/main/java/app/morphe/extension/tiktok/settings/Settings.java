@@ -16,7 +16,6 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.tiktok.navigation.BottomNavigationTabOptions;
 import app.morphe.extension.tiktok.navigation.NavigationTabOptions;
-import app.morphe.extension.tiktok.spoof.sim.SpoofSimPatch;
 
 public class Settings extends BaseSettings {
     public static final BooleanSetting REMOVE_ADS = new BooleanSetting("remove_ads", TRUE, true);
@@ -132,18 +131,9 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting ENABLE_LIVE_SEARCH =
             new BooleanSetting("enable_live_search", FALSE, true);
     public static final BooleanSetting SIM_SPOOF = new BooleanSetting("simspoof", FALSE, true);
-    public static final StringSetting SIM_SPOOF_ISO = new StringSetting(
-            "simspoof_iso",
-            SpoofSimPatch.getInitialCountryIso()
-    );
-    public static final StringSetting SIMSPOOF_MCCMNC = new StringSetting(
-            "simspoof_mccmnc",
-            SpoofSimPatch.getInitialMccMnc()
-    );
-    public static final StringSetting SIMSPOOF_OP_NAME = new StringSetting(
-            "simspoof_op_name",
-            SpoofSimPatch.getInitialOperatorName()
-    );
+    public static final StringSetting SIM_SPOOF_ISO = new StringSetting("simspoof_iso", "us");
+    public static final StringSetting SIMSPOOF_MCCMNC = new StringSetting("simspoof_mccmnc", "310260");
+    public static final StringSetting SIMSPOOF_OP_NAME = new StringSetting("simspoof_op_name", "T-Mobile");
 
     static {
         if (!DOWNLOAD_PATHS_MIGRATED.get()) {
