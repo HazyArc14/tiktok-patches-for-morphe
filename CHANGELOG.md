@@ -1,3 +1,16 @@
+# [0.8.0-dev.5](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.4...v0.8.0-dev.5) (2026-09-06)
+
+
+### Features
+
+* **tiktok:** add reviewed local feature patches ([0e4a6e1](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/0e4a6e1d9b4687f41328d3112ef8c341de4a081a))
+
+
+
+
+
+## 0.8.0-dev.5
+
 # [0.8.0-dev.4](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.3...v0.8.0-dev.4) (2026-09-06)
 
 
