@@ -85,10 +85,14 @@ public class Settings extends BaseSettings {
             new BooleanSetting("hide_feed_live_button", FALSE, true);
     public static final BooleanSetting HIDE_FEED_SEARCH_BUTTON =
             new BooleanSetting("hide_feed_search_button", FALSE, true);
+    public static final BooleanSetting HIDE_SUGGESTED_ACCOUNTS =
+            new BooleanSetting("hide_suggested_accounts", TRUE, true);
     public static final StringSetting DOWNLOAD_PATH = new StringSetting("down_path", "DCIM/TikTok");
     public static final StringSetting DOWNLOAD_VIDEO_PATH = new StringSetting("download_video_path", "DCIM/TikTok");
     public static final StringSetting DOWNLOAD_PHOTO_PATH = new StringSetting("download_photo_path", "DCIM/TikTok");
     public static final StringSetting DOWNLOAD_STICKER_PATH = new StringSetting("download_sticker_path", "DCIM/TikTok");
+    public static final StringSetting DOWNLOAD_VIDEO_QUALITY = new StringSetting("download_video_quality", "high");
+    public static final BooleanSetting DOWNLOAD_STORIES = new BooleanSetting("download_stories", TRUE);
     private static final BooleanSetting DOWNLOAD_PATHS_MIGRATED = new BooleanSetting(
             "download_paths_migrated",
             FALSE,
@@ -152,6 +156,11 @@ public class Settings extends BaseSettings {
     public static final StringSetting SIMSPOOF_MCCMNC = new StringSetting("simspoof_mccmnc", "310260");
     public static final StringSetting SIMSPOOF_OP_NAME = new StringSetting("simspoof_op_name", "T-Mobile");
     public static final BooleanSetting SHARE_SHEET_SEND_TO = new BooleanSetting("share_sheet_send_to", TRUE, true);
+    public static final BooleanSetting SHARE_SHEET_FORCE_AUTO_SCROLL = new BooleanSetting(
+            "share_sheet_force_auto_scroll",
+            FALSE,
+            true
+    );
     public static final BooleanSetting SHARE_SHEET_CHANNELS = new BooleanSetting("share_sheet_channels", TRUE, true);
     public static final StringSetting SHARE_SHEET_CHANNELS_ENABLED = new StringSetting(
             "share_sheet_channels_enabled",

@@ -27,6 +27,7 @@ public class ExtensionPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public void addPreferences(Context context) {
+        addPreference(group(context, "Links and sharing"));
         addPreference(new TogglePreference(
                 context,
                 "Sanitize sharing links",
@@ -42,6 +43,7 @@ public class ExtensionPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
+        addPreference(group(context, "Playback"));
         addPreference(new TogglePreference(
                 context,
                 "Show seekbar",
@@ -72,6 +74,12 @@ public class ExtensionPreferenceCategory extends ConditionalPreferenceCategory {
                     Settings.RESUME_VIDEO_AFTER_SCROLL
             ));
         }
+
+        if (SettingsStatus.longPressSpeedLockEnabled
+                || SettingsStatus.disableLongPressQuickShareEnabled
+                || SettingsStatus.disableLongPressRepostEnabled) {
+            addPreference(group(context, "Gestures"));
+        }
         if (SettingsStatus.longPressSpeedLockEnabled) {
             addPreference(new TogglePreference(
                     context,
@@ -96,6 +104,20 @@ public class ExtensionPreferenceCategory extends ConditionalPreferenceCategory {
                     Settings.DISABLE_LONG_PRESS_REPOST
             ));
         }
+
+        if (SettingsStatus.hideSuggestedAccountsEnabled
+                || SettingsStatus.nonPersonalizedSearchEnabled
+                || SettingsStatus.liveSearchEnabled) {
+            addPreference(group(context, "Discovery and search"));
+        }
+        if (SettingsStatus.hideSuggestedAccountsEnabled) {
+            addPreference(new TogglePreference(
+                    context,
+                    "Hide suggested accounts",
+                    "Remove suggested accounts from profile and inbox.",
+                    Settings.HIDE_SUGGESTED_ACCOUNTS
+            ));
+        }
         if (SettingsStatus.nonPersonalizedSearchEnabled) {
             addPreference(new TogglePreference(
                     context,
@@ -114,4 +136,3 @@ public class ExtensionPreferenceCategory extends ConditionalPreferenceCategory {
         }
     }
 }
-

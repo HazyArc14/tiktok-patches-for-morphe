@@ -25,6 +25,23 @@ public final class ShareSheetFilter {
     private ShareSheetFilter() {
     }
 
+    public static boolean shouldForceAutoScroll() {
+        boolean force = Settings.SHARE_SHEET_FORCE_AUTO_SCROLL.get();
+        if (force) {
+            Logger.printDebug(() -> "Share sheet Auto scroll: overriding fyp_auto_scroll rollout gate");
+        }
+        return force;
+    }
+
+    public static boolean forceAutoScrollPanelAvailability(boolean available) {
+        if (available || !Settings.SHARE_SHEET_FORCE_AUTO_SCROLL.get()) {
+            return available;
+        }
+
+        Logger.printDebug(() -> "Share sheet Auto scroll: overriding panel_auto_scroll rollout gate");
+        return true;
+    }
+
     public static void filterChannels(Object builder) {
         filterList(
                 builder,

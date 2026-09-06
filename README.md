@@ -43,9 +43,11 @@ The goal is to keep the existing patch set usable while adding more TikTok-focus
 | `Disable long-press repost` | Keeps holding Like from opening TikTok's repost action without disabling TikTok's wider repost and upvote systems. |
 | `Disable screen capture detection` | Prevents TikTok from detecting screenshots and screen recordings. |
 | `Diagnostic tools` | Adds optional structured Morphe logs, TikTok crash capture, and clipboard or file report export. |
-| `Downloads` | Adds watermark-free downloads, filename templates, and comment sticker saving with animated-media preservation. |
+| `Downloads` | Adds watermark-free downloads, separate media destinations, filename templates, video quality selection, and comment sticker saving with animated-media preservation. |
+| `Download stories` | Adds TikTok's native save action to each story's share menu and preserves the current story's item ID when a profile has several stories. |
 | `Enable Live search` | Shows TikTok's search entry in the Live drawer where supported. |
 | `Enable non-personalized search` | Uses TikTok's non-personalized search mode instead of its saved account choice. |
+| `Enable voice comments` | Enables TikTok's native voice-message controls in video comment sections when the account and server support them. |
 | `Feature Gate Lab` | Adds a searchable menu for viewing and overriding supported TikTok feature flags and configuration values. Client-side overrides cannot bypass server enforcement. |
 | `Feed filter` | Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, and videos outside configured view or like ranges, with optional filtering of cached and offline FYP fallback videos. |
 | `Feed tab navigation` | Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble. |
@@ -58,6 +60,7 @@ The goal is to keep the existing patch set usable while adding more TikTok-focus
 | `Hide feed save button` | Adds an option to hide the save/favourites button from video feeds. |
 | `Hide feed search button` | Adds an option to hide the search button at the top right of video feeds. |
 | `Hide quick comment reactions` | Hides TikTok's exposed quick emoji row in supported comment inputs. |
+| `Hide suggested accounts` | Removes suggested-account cards from profile and inbox surfaces. |
 | `Hold-and-slide 2x lock` | Enables TikTok's native hold, slide down, and release gesture for locking playback at 2x speed. |
 | `Open external links directly` | Opens profile and story website links in the system browser instead of TikTok's in-app browser. |
 | `Playback speed` | Enables playback-speed controls for all videos and remembers the selected speed between videos. |

@@ -14,8 +14,10 @@ public class SettingsStatus {
     public static boolean hideFeedSaveButtonEnabled = false;
     public static boolean hideFeedLiveButtonEnabled = false;
     public static boolean hideFeedSearchButtonEnabled = false;
+    public static boolean hideSuggestedAccountsEnabled = false;
     public static boolean copyCommentsWithoutUsernameEnabled = false;
     public static boolean downloadEnabled = false;
+    public static boolean storyDownloadsEnabled = false;
     public static boolean simSpoofEnabled = false;
     public static boolean captchaPopupSuppressionEnabled = false;
     public static boolean promotionalBannersEnabled = false;
@@ -65,12 +67,20 @@ public class SettingsStatus {
         hideFeedSearchButtonEnabled = true;
     }
 
+    public static void enableHideSuggestedAccounts() {
+        hideSuggestedAccountsEnabled = true;
+    }
+
     public static void enableCopyCommentsWithoutUsername() {
         copyCommentsWithoutUsernameEnabled = true;
     }
 
     public static void enableDownload() {
         downloadEnabled = true;
+    }
+
+    public static void enableStoryDownloads() {
+        storyDownloadsEnabled = true;
     }
 
     public static void enableSimSpoof() {
@@ -140,4 +150,3 @@ public class SettingsStatus {
     public static void load() {
     }
 }
-

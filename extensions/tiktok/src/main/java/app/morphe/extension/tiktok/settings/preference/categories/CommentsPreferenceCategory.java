@@ -26,12 +26,18 @@ public class CommentsPreferenceCategory extends ConditionalPreferenceCategory {
     @Override
     public void addPreferences(Context context) {
         if (SettingsStatus.commentTranslationEnabled) {
+            addPreference(group(context, "Translation"));
             addPreference(new TogglePreference(
                     context,
                     "Auto translate comments",
                     "Automatically translates loaded comment batches using TikTok's translation system.",
                     Settings.COMMENT_BATCH_TRANSLATION
             ));
+        }
+
+        if (SettingsStatus.hideCommentQuickReactionsEnabled
+                || SettingsStatus.copyCommentsWithoutUsernameEnabled) {
+            addPreference(group(context, "Comment actions"));
         }
         if (SettingsStatus.hideCommentQuickReactionsEnabled) {
             addPreference(new TogglePreference(
@@ -49,7 +55,9 @@ public class CommentsPreferenceCategory extends ConditionalPreferenceCategory {
                     Settings.COPY_COMMENTS_WITHOUT_USERNAME
             ));
         }
+
         if (SettingsStatus.foldableSplitViewEnabled) {
+            addPreference(group(context, "Large-screen layout"));
             addPreference(new TogglePreference(
                     context,
                     "Force split video/comment view",
