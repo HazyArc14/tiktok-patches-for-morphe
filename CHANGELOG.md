@@ -1,3 +1,16 @@
+# [0.8.0-dev.7](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.6...v0.8.0-dev.7) (2026-09-07)
+
+
+### Bug Fixes
+
+* **tiktok:** split auto scroll into separate patch ([683979b](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/683979b1ff98d5fc707a4ae401a8365306ec47b7))
+
+
+
+
+
+## 0.8.0-dev.7
+
 # [0.8.0-dev.6](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.5...v0.8.0-dev.6) (2026-09-07)
 
 
