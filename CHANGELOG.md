@@ -1,3 +1,16 @@
+# [0.8.0-dev.6](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.5...v0.8.0-dev.6) (2026-09-07)
+
+
+### Features
+
+* **tiktok:** add native comment sort controls ([e1fb74c](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/e1fb74c740f862d702b2d03a2968960ca5d9d954))
+
+
+
+
+
+## 0.8.0-dev.6
+
 # [0.8.0-dev.5](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.4...v0.8.0-dev.5) (2026-09-06)
 
 
