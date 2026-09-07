@@ -134,6 +134,11 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting ALWAYS_SHOW_PUBLISH_DATE = new BooleanSetting("always_show_publish_date", TRUE, true);
     public static final BooleanSetting CLEAR_DISPLAY = new BooleanSetting("clear_display", FALSE);
     public static final BooleanSetting FOLDABLE_SPLIT_VIEW = new BooleanSetting("foldable_split_view", FALSE, true);
+    public static final BooleanSetting COMMENT_SORT_FORCE_SHOW = new BooleanSetting(
+            "comment_sort_force_show",
+            FALSE,
+            true
+    );
     public static final IntegerSetting FOLDABLE_SPLIT_VIEW_MIN_WIDTH_DP = new IntegerSetting(
             "foldable_split_view_min_width_dp",
             600,

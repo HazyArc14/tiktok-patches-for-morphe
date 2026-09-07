@@ -9,7 +9,8 @@ $fingerprintsPath = Join-Path $repoRoot 'patches/src/main/kotlin/app/morphe/patc
 $patchPath = Join-Path $repoRoot 'patches/src/main/kotlin/app/morphe/patches/tiktok/misc/sharesheet/ShareSheetPatch.kt'
 $filterPath = Join-Path $repoRoot 'extensions/tiktok/src/main/java/app/morphe/extension/tiktok/sharesheet/ShareSheetFilter.java'
 $settingsPath = Join-Path $repoRoot 'extensions/tiktok/src/main/java/app/morphe/extension/tiktok/settings/Settings.java'
-$preferencePath = Join-Path $repoRoot 'extensions/tiktok/src/main/java/app/morphe/extension/tiktok/settings/preference/categories/ShareSheetPreferenceCategory.java'
+$preferencePath = Join-Path $repoRoot 'extensions/tiktok/src/main/java/app/morphe/extension/tiktok/settings/preference/categories/ExtensionPreferenceCategory.java'
+$shareSheetPreferencePath = Join-Path $repoRoot 'extensions/tiktok/src/main/java/app/morphe/extension/tiktok/settings/preference/categories/ShareSheetPreferenceCategory.java'
 
 function Assert-Contains {
     param(
@@ -26,7 +27,11 @@ function Assert-Contains {
 }
 
 Assert-Contains $settingsPath 'SHARE_SHEET_FORCE_AUTO_SCROLL' 'force-show setting is declared'
-Assert-Contains $preferencePath 'Force show Auto scroll' 'force-show toggle is exposed in Share sheet settings'
+Assert-Contains $preferencePath 'Force show Auto scroll' 'force-show toggle is exposed in App behavior settings'
+if ((Get-Content -Raw -LiteralPath $shareSheetPreferencePath).Contains('Force show Auto scroll')) {
+    throw 'FAIL: force-show toggle remains exposed in Share sheet settings'
+}
+Write-Host 'PASS: force-show toggle is no longer exposed in Share sheet settings'
 Assert-Contains $fingerprintsPath '"fyp_auto_scroll"' 'TikTok fyp_auto_scroll gate is fingerprinted'
 Assert-Contains $fingerprintsPath '"panel_auto_scroll"' 'TikTok panel_auto_scroll gate is fingerprinted'
 Assert-Contains $patchPath 'AutoScrollFeatureGateFingerprint' 'account rollout gate is hooked'

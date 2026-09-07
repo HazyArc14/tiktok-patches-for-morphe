@@ -32,6 +32,7 @@ public class SettingsStatus {
     public static boolean externalBrowserEnabled = false;
     public static boolean alwaysShowPublishDateEnabled = false;
     public static boolean foldableSplitViewEnabled = false;
+    public static boolean commentSortControlsEnabled = false;
     public static boolean diagnosticsEnabled = false;
     public static boolean shareSheetEnabled = false;
 
@@ -137,6 +138,10 @@ public class SettingsStatus {
 
     public static void enableFoldableSplitView() {
         foldableSplitViewEnabled = true;
+    }
+
+    public static void enableCommentSortControls() {
+        commentSortControlsEnabled = true;
     }
 
     public static void enableDiagnostics() {

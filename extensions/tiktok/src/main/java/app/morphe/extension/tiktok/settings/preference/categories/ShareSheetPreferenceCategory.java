@@ -59,13 +59,6 @@ public class ShareSheetPreferenceCategory extends ConditionalPreferenceCategory 
         addPreference(group(context, "Video actions"));
         addPreference(new TogglePreference(
                 context,
-                "Force show Auto scroll",
-                "Expose TikTok's native Auto scroll action on eligible For You videos when account rollout "
-                        + "gates hide it. TikTok still decides whether the current video and screen support it.",
-                Settings.SHARE_SHEET_FORCE_AUTO_SCROLL
-        ));
-        addPreference(new TogglePreference(
-                context,
                 "Show \"Video Actions\"",
                 "Show the actions grid (Report, Download, Duet, Stitch, Playback Speed, ...).",
                 Settings.SHARE_SHEET_ACTIONS
