@@ -42,13 +42,13 @@ public class ExtensionPreferenceCategory extends ConditionalPreferenceCategory {
                     Settings.OPEN_EXTERNAL_LINKS
             ));
         }
-        if (SettingsStatus.shareSheetEnabled) {
+        if (SettingsStatus.autoScrollEnabled) {
             addPreference(new TogglePreference(
                     context,
                     "Force show Auto scroll",
                     "Expose TikTok's native Auto scroll action on eligible For You videos when account rollout "
                             + "gates hide it. TikTok still decides whether the current video and screen support it.",
-                    Settings.SHARE_SHEET_FORCE_AUTO_SCROLL
+                    Settings.FORCE_SHOW_AUTO_SCROLL
             ));
         }
 

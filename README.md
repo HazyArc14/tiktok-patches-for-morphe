@@ -53,6 +53,7 @@ The goal is to keep the existing patch set usable while adding more TikTok-focus
 | `Feed tab navigation` | Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble. |
 | `Fix Google login` | Restores Google account sign-in after patching. |
 | `Foldable split comment view` | Forces TikTok's tablet-style split layout, showing comments beside the video instead of as a bottom sheet, once the screen is at least as wide as a configurable threshold (600dp by default). Intended for foldables TikTok doesn't already treat as tablet-class. |
+| `Force show Auto scroll` | Adds a setting that bypasses TikTok's rollout gates for its native Auto scroll action on supported videos. |
 | `Hide CAPTCHA popups` | Hides non-account verification puzzle dialogs, including those shown while browsing LIVE. Account verification remains available, and server checks are not bypassed. |
 | `Hide floating promotions` | Removes floating promotional badges, coin icons, and timer banners from the Home feed. |
 | `Hide feed follow button` | Adds an option to hide the + follow button below creator avatars in video feeds. |

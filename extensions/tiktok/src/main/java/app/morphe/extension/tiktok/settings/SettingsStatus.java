@@ -35,6 +35,7 @@ public class SettingsStatus {
     public static boolean commentSortControlsEnabled = false;
     public static boolean diagnosticsEnabled = false;
     public static boolean shareSheetEnabled = false;
+    public static boolean autoScrollEnabled = false;
 
     public static void enableFeedFilter() {
         feedFilterEnabled = true;
@@ -150,6 +151,10 @@ public class SettingsStatus {
 
     public static void enableShareSheet() {
         shareSheetEnabled = true;
+    }
+
+    public static void enableAutoScroll() {
+        autoScrollEnabled = true;
     }
 
     public static void load() {

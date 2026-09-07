@@ -480,7 +480,7 @@ public class TikTokPreferenceFragment extends AbstractPreferenceFragment {
                 && Settings.DISABLE_LONG_PRESS_REPOST.get()) {
             count++;
         }
-        if (SettingsStatus.shareSheetEnabled && Settings.SHARE_SHEET_FORCE_AUTO_SCROLL.get()) {
+        if (SettingsStatus.autoScrollEnabled && Settings.FORCE_SHOW_AUTO_SCROLL.get()) {
             count++;
         }
         return count;

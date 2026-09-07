@@ -530,6 +530,34 @@
       "options": []
     },
     {
+      "name": "Force show Auto scroll",
+      "description": "Adds a setting that bypasses TikTok's rollout gates for its native Auto scroll action on supported videos.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.zhiliaoapp.musically": [
+          "46.2.3"
+        ]
+      },
+      "compatibility": [
+        {
+          "name": "TikTok",
+          "packageName": "com.zhiliaoapp.musically",
+          "description": null,
+          "appIconColor": 16657493,
+          "targets": [
+            {
+              "version": "46.2.3",
+              "experimental": false
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Hide CAPTCHA popups",
       "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs while preserving login and account verification.",
       "use": true,

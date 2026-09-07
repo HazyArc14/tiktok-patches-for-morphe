@@ -161,7 +161,8 @@ public class Settings extends BaseSettings {
     public static final StringSetting SIMSPOOF_MCCMNC = new StringSetting("simspoof_mccmnc", "310260");
     public static final StringSetting SIMSPOOF_OP_NAME = new StringSetting("simspoof_op_name", "T-Mobile");
     public static final BooleanSetting SHARE_SHEET_SEND_TO = new BooleanSetting("share_sheet_send_to", TRUE, true);
-    public static final BooleanSetting SHARE_SHEET_FORCE_AUTO_SCROLL = new BooleanSetting(
+    // Keep the original key so existing installations retain the user's choice.
+    public static final BooleanSetting FORCE_SHOW_AUTO_SCROLL = new BooleanSetting(
             "share_sheet_force_auto_scroll",
             FALSE,
             true
