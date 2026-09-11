@@ -75,13 +75,6 @@ public class ShareSheetPreferenceCategory extends ConditionalPreferenceCategory 
                 keys -> toRowsFromActions(ShareSheetOptions.VIDEO_ACTIONS.optionsForKeys(keys)),
                 ShareSheetPreferenceCategory::observedActionKeys
         ));
-        addPreference(new TogglePreference(
-                context,
-                "Show \"Block\" in Video Actions",
-                "Add a Block action to a video's share sheet, so a user can be blocked without opening "
-                        + "their profile. Hidden for users you've already blocked.",
-                Settings.SHARE_SHEET_BLOCK_USER_ACTION
-        ));
 
         addPreference(group(context, "User actions"));
         addPreference(new TogglePreference(

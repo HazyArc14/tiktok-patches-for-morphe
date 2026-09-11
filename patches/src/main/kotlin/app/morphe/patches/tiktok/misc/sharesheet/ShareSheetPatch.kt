@@ -8,7 +8,6 @@ import app.morphe.patches.tiktok.misc.extension.sharedExtensionPatch
 import app.morphe.patches.tiktok.misc.settings.SettingsStatusLoadFingerprint
 
 private const val FILTER_CLASS_DESCRIPTOR = "Lapp/morphe/extension/tiktok/sharesheet/ShareSheetFilter;"
-private const val BLOCK_ACTION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/tiktok/sharesheet/BlockUserAction;"
 
 @Suppress("unused")
 val shareSheetPatch = bytecodePatch(
@@ -33,7 +32,6 @@ val shareSheetPatch = bytecodePatch(
                 invoke-static {p1}, $FILTER_CLASS_DESCRIPTOR->filterChannels(Ljava/lang/Object;)V
                 invoke-static {p1}, $FILTER_CLASS_DESCRIPTOR->filterActions(Ljava/lang/Object;)V
                 invoke-static {p1}, $FILTER_CLASS_DESCRIPTOR->applySendToVisibility(Ljava/lang/Object;)V
-                invoke-static {p1}, $BLOCK_ACTION_CLASS_DESCRIPTOR->inject(Ljava/lang/Object;)V
             """,
         )
     }

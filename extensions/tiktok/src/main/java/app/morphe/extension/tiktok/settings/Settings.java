@@ -221,8 +221,6 @@ public class Settings extends BaseSettings {
             false,
             false
     );
-    public static final BooleanSetting SHARE_SHEET_BLOCK_USER_ACTION =
-            new BooleanSetting("share_sheet_block_user_action", FALSE, true);
     private static final BooleanSetting SHARE_SHEET_ACTIONS_SPLIT_MIGRATED =
             new BooleanSetting("share_sheet_actions_split_migrated", FALSE, false, false);
 
